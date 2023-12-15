@@ -46,6 +46,7 @@ public class ChatbotController {
         return "chatbot";
     }
 
+    //For now I am using just these 3 cities
     private String extractCityFromMessage(String userMessage) {
         Pattern cityPattern = Pattern.compile("\\b(?:London|Jersey City|Michigan)\\b", Pattern.CASE_INSENSITIVE);
 
@@ -58,14 +59,8 @@ public class ChatbotController {
         }
     }
 
+    //This method is used if input contains any other data except the valid cities
     private String processUserMessage(String userMessage) {
-        if (userMessage.contains("hi")) {
-            return "knock knock";
-        } else if (userMessage.contains("who's")) {
-            return "bharath";
-        } else if (userMessage.contains("who")) {
-            return "BHARATH WITH A TEENY TINY WEINER";
-        }
         return "You said: " + userMessage;
     }
 }
