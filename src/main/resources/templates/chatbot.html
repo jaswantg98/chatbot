@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Web Application</title>
+    <style>
+        body {
+            background-color: black;
+            color: yellow;
+        }
+
+        h1 {
+            color: yellow;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            color: yellow;
+        }
+
+        input {
+            background-color: white;
+            color: black;
+            border: 1px solid yellow;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: yellow;
+            color: black;
+            padding: 5px 10px;
+            border: none;
+        }
+
+        .chat-response {
+            margin: 10px 0;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+    <h1>Chatbot</h1>
+    <p th:text="${welcomeMessage}">Welcome to the Chatbot Web Application!</p>
+
+    <form th:action="@{/chat}" method="post">
+        <label for="userMessage">Your Message:</label>
+        <input type="text" id="userMessage" name="userMessage" required>
+        <button type="submit">Send</button>
+    </form>
+
+    <div th:each="response : ${chatResponses}">
+        <p th:text="${response}"></p>
+    </div>
+
+<!--    <div th:each="response : ${chatResponses}" class="chat-response">-->
+<!--        <p th:text="${response}"></p>-->
+<!--        <div th:if="${response.contains('Weather data')}">-->
+<!--            &lt;!&ndash; Extract temperature values using #jsonUtils &ndash;&gt;-->
+<!--            <div th:with="weatherData=${#jsonUtils.parse(response.replace('Weather data: ', ''))}">-->
+<!--                <p th:text="'Temperature in Celsius: ' + ${weatherData.current.temp_c} + '°C'"></p>-->
+<!--                <p th:text="'Temperature in Fahrenheit: ' + ${weatherData.current.temp_f} + '°F'"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+</div>
+
+</body>
+
+</html>
